@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom';
 import {AppBar, Toolbar, ListItem, IconButton, ListItemText, Divider, Avatar, List, Typography, Box, ListItemIcon} from '@material-ui/core';
 import MobilRightMenuSlider from '@material-ui/core/Drawer'
 import {MenuOpen, AssignmentInd, Home, Apps, ContactMail} from '@material-ui/icons';
@@ -28,10 +29,12 @@ const menuItems = [
 	{
 		listIcon: <Home />,
 		listText: "Home",
+		listPath: "/"
 	},
 	{
 		listIcon: <AssignmentInd />,
 		listText: "Resume",
+		listPath: "/resume"
 	},
 	{
 		listIcon: <Apps />,
@@ -60,7 +63,7 @@ const Navbar = () => {
 			<Divider />
 			<List>
 				{menuItems.map((lsItem, key) => (
-					<ListItem button key={key}>
+					<ListItem button key={key} component={Link} to={lsItem.listPath}>
 						<ListItemIcon className={classes.listItem}>
 							{lsItem.listIcon}
 						</ListItemIcon>
